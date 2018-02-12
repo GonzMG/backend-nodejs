@@ -5,6 +5,8 @@ var AnimalController = require('../controllers/animal');
 
 var api = express.Router();
 
-api.get('/pruebas-del-animal', AnimalController.pruebasAnimal);	//GET del metodo pruebas de user
+api.get('/pruebas-del-animal', AnimalController.pruebasAnimal);
+api.post('/register-animal', AnimalController.saveAnimal);
+api.post('/mostrar-animal', AnimalController.getAnimalsByUser);
 
 module.exports = api;
