@@ -74,7 +74,22 @@ function saveUser(req, res){
 	
 }
 
+function getKeepers(req, res){
+	User.find({role: 'ROLE_ADMIN'}).exec((err, users) => {
+		if(err){
+			res.status(500).send({message: 'Error al consultar cuidadores'});
+		}else{
+			if(!users){
+				res.status(404).send({message: 'No existen cuidadores'});
+			}else{
+				res.status(200).send({users})
+			}
+		}
+	});
+}
+
 module.exports = {
 	pruebas,
-	saveUser
+	saveUser,
+	getKeepers
 };
